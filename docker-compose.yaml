@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  faceid:
+    container_name: faceid
+    build: .
+#    image: sanjeetpal/deepface
+    restart: always
+    ports:
+       - 5000:5000
+#      - 3571:3571
+#      - 3570:3570
+#    networks:
+#      - catracaApp
+
+#networks:
+#  catracaApp:
+#    external: true
