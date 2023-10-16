@@ -8,6 +8,9 @@ blueprint = Blueprint("routes", __name__)
 def home():
     return "<h1>Welcome to DeepFace API!</h1>"
 
+@blueprint.route("/stream")
+def stream():
+    service.stream()
 
 @blueprint.route("/represent", methods=["POST"])
 def represent():

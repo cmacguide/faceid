@@ -1,5 +1,7 @@
 from deepface import DeepFace
 
+def stream():
+    DeepFace.stream(db_path = "../autorizados")
 
 def represent(img_path, model_name, detector_backend, enforce_detection, align):
     result = {}
