@@ -1,7 +1,10 @@
 from deepface import DeepFace
 
 def stream():
-    DeepFace.stream(db_path = "../autorizados")
+   print("Stream function called")
+   obj = DeepFace.stream(db_path = "./autorizados")
+   print("Stream object:", obj)
+   return obj
 
 def represent(img_path, model_name, detector_backend, enforce_detection, align):
     result = {}

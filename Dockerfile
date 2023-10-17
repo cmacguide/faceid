@@ -1,45 +1,26 @@
 #base image
+# FROM continuumio/anaconda3
 FROM python:3.8
-LABEL org.opencontainers.image.source https://github.com/serengil/deepface
-# -----------------------------------
-# create required folder
-RUN mkdir /app
-RUN mkdir /app/deepface
-# -----------------------------------
-# Copy required files from repo into image
-COPY ./autorizados /app/autorizados
-COPY ./deepface /app/deepface
-COPY ./api/app.py /app/
-COPY ./api/routes.py /app/
-COPY ./api/service.py /app/
-COPY ./requirements.txt /app/
-COPY ./setup.py /app/
-COPY ./README.md /app/
-# -----------------------------------
-# switch to application directory
-WORKDIR /app
-# -----------------------------------
-# update image os
+# Adiciona o conda-forge aos seus canais
+# RUN conda config --add channels conda-forge
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6 -y
-# -----------------------------------
-# if you will use gpu, then you should install tensorflow-gpu package
-# RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org tensorflow-gpu
-# -----------------------------------
-# install deepface from pypi release (might be out-of-the-date)
-# RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org deepface
-# -----------------------------------
-# install deepface from source code (always up-to-date)
-RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org -e .
-# -----------------------------------
-# some packages are optional in deepface. activate if your task depends on one.
-# RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org cmake==3.24.1.1
-# RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org dlib==19.20.0
-# RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org lightgbm==2.3.1
-# -----------------------------------
-# environment variables
-ENV PYTHONUNBUFFERED=1
-# -----------------------------------
-# run the app (re-configure port if necessary)
+
+# Define a prioridade do canal como estrita
+# RUN conda config --set channel_priority strict
+RUN pip install --upgrade pip
+# Instala a biblioteca DeepFace
+# RUN conda install -c conda-forge deepface
+# RUN conda install -c conda-forge gunicorn
+# RUN pip install gunicorn
+
+# Define o diretório de trabalho
+WORKDIR /app
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
+# Copia o diretório atual para dentro do container
+COPY . /app
+
 EXPOSE 5000
-CMD ["gunicorn", "--workers=1", "--timeout=3600", "--bind=0.0.0.0:5000", "app:create_app()"]
+# CMD ["gunicorn", "--workers=1", "--timeout=3600", "--bind=0.0.0.0:5000", "app:create_app()"]
+CMD ["python", "stream.py"]
