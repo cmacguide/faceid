@@ -8,7 +8,11 @@ services:
     restart: always
     ports:
        - 5000:5000
-#    volumes:
+    volumes:
+       - ./autorizados:/autorizados
+       - ./deepface:/app/deepface
+    devices:
+       - /dev/video0:/dev/video0       
 #       - ./api:/app
 #      - 3571:3571
 #      - 3570:3570

@@ -12,6 +12,7 @@ COPY ./deepface /app/deepface
 COPY ./api/app.py /app/
 COPY ./api/routes.py /app/
 COPY ./api/service.py /app/
+COPY ./stream.py /app/
 COPY ./requirements.txt /app/
 COPY ./setup.py /app/
 COPY ./README.md /app/
@@ -42,4 +43,5 @@ ENV PYTHONUNBUFFERED=1
 # -----------------------------------
 # run the app (re-configure port if necessary)
 EXPOSE 5000
+#CMD ["python", "stream.py"]
 CMD ["gunicorn", "--workers=1", "--timeout=3600", "--bind=0.0.0.0:5000", "app:create_app()"]
