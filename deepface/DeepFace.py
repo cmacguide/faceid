@@ -710,10 +710,10 @@ def represent(
 def stream(
     db_path="",
     model_name="VGG-Face",
-    detector_backend="opencv",
+    detector_backend="retinaface",
     distance_metric="cosine",
     enable_face_analysis=True,
-    source=0,
+    source="/dev/video0",
     time_threshold=5,
     frame_threshold=5,
 ):
