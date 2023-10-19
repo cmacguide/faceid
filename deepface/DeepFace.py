@@ -94,6 +94,7 @@ def verify(
     enforce_detection=True,
     align=True,
     normalization="base",
+    
 ):
     """
     This function verifies an image pair is same person or different persons. In the background,
@@ -400,9 +401,9 @@ def find(
     img_path,
     db_path,
     model_name="VGG-Face",
-    distance_metric="cosine",
+    distance_metric="euclidean",
     enforce_detection=True,
-    detector_backend="opencv",
+    detector_backend="retinaface",
     align=True,
     normalization="base",
     silent=False,
@@ -711,7 +712,7 @@ def stream(
     db_path="",
     model_name="VGG-Face",
     detector_backend="retinaface",
-    distance_metric="cosine",
+    distance_metric="euclidean",
     enable_face_analysis=True,
     source="/dev/video0",
     time_threshold=5,
