@@ -42,6 +42,7 @@ def represent():
 @blueprint.route("/verify", methods=["POST"])
 def verify():
     input_args = request.get_json()
+    
 
     if input_args is None:
         return {"message": "empty input set passed"}

@@ -2,7 +2,7 @@ from deepface import DeepFace
 
 def stream():
    print("Stream function called")
-   obj = DeepFace.stream(db_path = "./autorizados")
+   obj = DeepFace.stream(db_path ="./representations")
    print("Stream object:", obj)
    return obj
 

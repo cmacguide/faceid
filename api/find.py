@@ -1,8 +1,6 @@
 from deepface import DeepFace
 
-FACE_DB_PATH = './face-db01/00155196510.jpg'
-FACE_DB_PATH2 = './face-db/11677541741.jpg'
-# FACE_DB = './face-db'
+FACE_DB_PATH = './employee/00155196510.jpg'
 FACE_DB = './representations'
 
 models = [
@@ -19,10 +17,7 @@ backends = [
   'retinaface',    
   'mtcnn', 
 ]
-FACE_DB_PATH = './face-db01/00155196510.jpg'
-FACE_DB_PATH2 = './face-db/11677541741.jpg'
-# FACE_DB = './face-db'
-FACE_DB = './representations'
+
 
 prediction = DeepFace.find(img_path=FACE_DB_PATH, db_path=FACE_DB,
                         model_name=models[2],
