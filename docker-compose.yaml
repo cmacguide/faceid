@@ -9,8 +9,8 @@ services:
     
     ports:
       - 5000:5000
-    devices:
-      - /dev/video0:/dev/video0   
+    # devices:
+    #   - /dev/video0:/dev/video0   
      
     volumes:       
       - ./deepface:/app/deepface
@@ -23,7 +23,9 @@ services:
       - ./employee:/app/employee   
     # networks:
     #   - catracaApp
-    # command: ["python", "./api/find.py"]
+    # mudar o contexto para a pasta api
+    working_dir: /app/api    
+    #command: ["flask", "run", "--host=localhost", "--port=5000"]
     command: ["gunicorn", "--workers=1", "--timeout=3600", "--bind=0.0.0.0:5000", "app:create_app()"]
     tty: true
 #networks:

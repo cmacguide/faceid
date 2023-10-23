@@ -56,8 +56,6 @@ def find():
 
     return prediction
 
-
-
 @blueprint.route("/")
 def home():
     return "<h1>Welcome to DeepFace API!</h1>"
