@@ -45,3 +45,18 @@ def analyze(img_path, actions, detector_backend, enforce_detection, align):
     )
     result["results"] = demographies
     return result
+
+# escrever a função para o find fazendo upload da imagem e salvando no ima_path 
+def find(img_path, db_path, model_name, detector_backend, enforce_detection, align):
+    result = {}
+    prediction = DeepFace.find(
+        img_path=img_path,
+        db_path=db_path,
+        model_name=model_name,
+        detector_backend=detector_backend,
+        enforce_detection=enforce_detection,
+        align=align,
+    )
+    result["results"] = prediction[0]["identity"][0]
+    return result
+
