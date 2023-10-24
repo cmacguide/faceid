@@ -3,7 +3,8 @@ import json
 
 FACE_DB_PATH = './employee/image.jpg'
 FACE_DB = './representations'
-
+db_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/representations"
+img_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/employee/image.jpg"
 models = [
   "Facenet512",   
   "DeepFace",  
@@ -85,9 +86,9 @@ async def find(img_path, db_path, model_name, detector_backend, enforce_detectio
 async def find_face():
     resultId = {}
     resultMt = {}
-    prediction = DeepFace.verify_face(
-        img_path=FACE_DB_PATH,
-        db_path=FACE_DB,
+    prediction = DeepFace.find(
+        img_path=img_path,
+        db_path=db_path,
         model_name=models[2],
         detector_backend=backends[2],
         enforce_detection=True,

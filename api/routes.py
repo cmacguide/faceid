@@ -146,5 +146,8 @@ async def create_upload_file(file: UploadFile = File(...)):
         pass
     finally: 
         await file.close()      
-        return {"message": f"Successfully uploaded {file.filename}"}
+        
+        prediction = await service.find_face()
+
+    return prediction
    
