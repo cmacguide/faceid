@@ -1,33 +1,62 @@
-from flask import Blueprint, request
+from fastapi import APIRouter, Request, Response, status, UploadFile, File  
+import aiofiles
 import service
 import os
 
-blueprint = Blueprint("routes", __name__)
+router = APIRouter()
 
 os_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/employee"
 db_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/representations"
 
 # escrever uma rota para o serviço de upload
-@blueprint.route('/upload', methods=['POST'])
+from fastapi import Request
+
+@router.post('/upload')
 # escrever a função para o upload da imagem
-def upload_file():
-    if 'file' not in request.files:
-        return {"message": "No file part in the request"}
+# async def upload_file(file : UploadFile):
+#     # escrever um código para salvar o arquivo no diretório
+#     print(file.content_type)          
+#     # escrever um if para verificar se o arquivo é uma imagem
+#     if file.content_type.startswith('image/'):
+#         file_contents = await file.read()
+#     # verificar o nome do arquivo 
+#         # print(file_contents.filename)
+#         # img_path = os.path.join(os_path, file.filename)
+#         # file.save(img_path)
+#         return {"message": "File successfully uploaded", "img_path": img_path}
+#         # return {"message": "File is an image"}
+#     else:
+#         return {"message": "File is not an image"}
+async def create_upload_file(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        async with aiofiles.open(file.name, 'wb') as f:
+            await f.write(contents)
+    except Exception: 
+        pass
+    finally: 
+        await file.close()      
+        return {"message": f"Successfully uploaded {file.filename}"}
+   
+    # file_contents = await file.read()
+    # print("Request",file.name)
+    # if 'file' not in request.file:
+    #     return {"message": "No file part in the request"}
 
-    file = request.files['file']  
-    if file.filename == '':
-        return {"message": "No file selected for uploading"}
+    # file = request.file['file']  
+    # if file.filename == '':
+    #     return {"message": "No file selected for uploading"}
 
-    if file:
-        print(file)
-        img_path = os.path.join(os_path, file.filename)
-        file.save(img_path)
-        return {"message": "File successfully uploaded", "img_path": img_path}
+    # if file:
+    #     print(file)
+    #     img_path = os.path.join(os_path, file.filename)
+    #     file.save(img_path)
+    #     return {"message": "File successfully uploaded", "img_path": img_path}
 
 # escrever uma rota para o serviço de find
-@blueprint.route("/find", methods=["POST"])
+@router.post("/find")
 # escrever a função para o find fazendo o upload da imagem
-def find():
+async def find(request: Request):
     input_args = request.get_json()
     if input_args is None:
         return {"message": "empty input set passed"}
@@ -45,7 +74,7 @@ def find():
     enforce_detection = input_args.get("enforce_detection", False)
     align = input_args.get("align", True)
 
-    prediction = service.find(
+    prediction = await service.find(
         img_path=img_path,
         db_path=db_path,
         model_name=model_name,
@@ -56,16 +85,16 @@ def find():
 
     return prediction
 
-@blueprint.route("/")
-def home():
+@router.get("/")
+async def root():
     return "<h1>Welcome to DeepFace API!</h1>"
 
-@blueprint.route("/stream")
-def stream():
-    service.stream()
+@router.get("/stream")
+async def stream():
+  return await service.stream()
 
-@blueprint.route("/represent", methods=["POST"])
-def represent():
+@router.post("/represent")
+async def represent(request: Request):
     input_args = request.get_json()
 
     if input_args is None:
@@ -80,7 +109,7 @@ def represent():
     enforce_detection = input_args.get("enforce_detection", True)
     align = input_args.get("align", True)
 
-    obj = service.represent(
+    obj = await service.represent(
         img_path=img_path,
         model_name=model_name,
         detector_backend=detector_backend,
@@ -91,8 +120,8 @@ def represent():
     return obj
 
 
-@blueprint.route("/verify", methods=["POST"])
-def verify():
+@router.post("/verify")
+async def verify(request: Request):
     input_args = request.get_json()
     
 
@@ -114,7 +143,7 @@ def verify():
     distance_metric = input_args.get("distance_metric", "cosine")
     align = input_args.get("align", True)
 
-    verification = service.verify(
+    verification = await service.verify(
         img1_path=img1_path,
         img2_path=img2_path,
         model_name=model_name,
@@ -129,8 +158,8 @@ def verify():
     return verification
 
 
-@blueprint.route("/analyze", methods=["POST"])
-def analyze():
+@router.post("/analyze")
+async def analyze(request: Request):
     input_args = request.get_json()
 
     if input_args is None:
@@ -145,7 +174,7 @@ def analyze():
     align = input_args.get("align", True)
     actions = input_args.get("actions", ["age", "gender", "emotion", "race"])
 
-    demographies = service.analyze(
+    demographies = await service.analyze(
         img_path=img_path,
         actions=actions,
         detector_backend=detector_backend,
