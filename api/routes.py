@@ -11,68 +11,26 @@ db_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/r
 # escrever uma rota para o serviço de upload
 from fastapi import Request
 
-@router.post('/upload')
-# escrever a função para o upload da imagem
-# async def upload_file(file : UploadFile):
-#     # escrever um código para salvar o arquivo no diretório
-#     print(file.content_type)          
-#     # escrever um if para verificar se o arquivo é uma imagem
-#     if file.content_type.startswith('image/'):
-#         file_contents = await file.read()
-#     # verificar o nome do arquivo 
-#         # print(file_contents.filename)
-#         # img_path = os.path.join(os_path, file.filename)
-#         # file.save(img_path)
-#         return {"message": "File successfully uploaded", "img_path": img_path}
-#         # return {"message": "File is an image"}
-#     else:
-#         return {"message": "File is not an image"}
-async def create_upload_file(file: UploadFile = File(...)):
-    try:
-        contents = await file.read()
-        async with aiofiles.open(file.name, 'wb') as f:
-            await f.write(contents)
-    except Exception: 
-        pass
-    finally: 
-        await file.close()      
-        return {"message": f"Successfully uploaded {file.filename}"}
-   
-    # file_contents = await file.read()
-    # print("Request",file.name)
-    # if 'file' not in request.file:
-    #     return {"message": "No file part in the request"}
+@router.get("/")
+async def root():
+    return "<h1>Welcome to DeepFace API!</h1>"
 
-    # file = request.file['file']  
-    # if file.filename == '':
-    #     return {"message": "No file selected for uploading"}
-
-    # if file:
-    #     print(file)
-    #     img_path = os.path.join(os_path, file.filename)
-    #     file.save(img_path)
-    #     return {"message": "File successfully uploaded", "img_path": img_path}
-
-# escrever uma rota para o serviço de find
 @router.post("/find")
-# escrever a função para o find fazendo o upload da imagem
-async def find(request: Request):
-    input_args = request.get_json()
-    if input_args is None:
-        return {"message": "empty input set passed"}
-
-    img_path = input_args.get("img_path")
+async def find(request: Request):   
+    body = await request.json()
+    
+    img_path = body.get("img_path")
     if img_path is None:
         return {"message": "you must pass img_path input"}
 
-    db_path = input_args.get("db_path")
+    db_path = body.get("db_path")
     if db_path is None:
         return {"message": "you must pass db_path input"}
 
-    model_name = input_args.get("model_name", "VGG-Face")
-    detector_backend = input_args.get("detector_backend", "opencv")
-    enforce_detection = input_args.get("enforce_detection", False)
-    align = input_args.get("align", True)
+    model_name = body.get("model_name", "VGG-Face")
+    detector_backend = body.get("detector_backend", "retinaface")
+    enforce_detection = body.get("enforce_detection", False)
+    align = body.get("align", True)
 
     prediction = await service.find(
         img_path=img_path,
@@ -85,29 +43,25 @@ async def find(request: Request):
 
     return prediction
 
-@router.get("/")
-async def root():
-    return "<h1>Welcome to DeepFace API!</h1>"
-
 @router.get("/stream")
 async def stream():
   return await service.stream()
 
 @router.post("/represent")
 async def represent(request: Request):
-    input_args = request.get_json()
+    body = request.json()
 
-    if input_args is None:
+    if body is None:
         return {"message": "empty input set passed"}
 
-    img_path = input_args.get("img")
+    img_path = body.get("img")
     if img_path is None:
         return {"message": "you must pass img_path input"}
 
-    model_name = input_args.get("model_name", "VGG-Face")
-    detector_backend = input_args.get("detector_backend", "opencv")
-    enforce_detection = input_args.get("enforce_detection", True)
-    align = input_args.get("align", True)
+    model_name = body.get("model_name", "VGG-Face")
+    detector_backend = body.get("detector_backend", "opencv")
+    enforce_detection = body.get("enforce_detection", True)
+    align = body.get("align", True)
 
     obj = await service.represent(
         img_path=img_path,
@@ -119,17 +73,15 @@ async def represent(request: Request):
 
     return obj
 
-
 @router.post("/verify")
 async def verify(request: Request):
-    input_args = request.get_json()
-    
+    body = request.json()    
 
-    if input_args is None:
+    if body is None:
         return {"message": "empty input set passed"}
 
-    img1_path = input_args.get("img1_path")
-    img2_path = input_args.get("img2_path")
+    img1_path = body.get("img1_path")
+    img2_path = body.get("img2_path")
 
     if img1_path is None:
         return {"message": "you must pass img1_path input"}
@@ -137,11 +89,11 @@ async def verify(request: Request):
     if img2_path is None:
         return {"message": "you must pass img2_path input"}
 
-    model_name = input_args.get("model_name", "VGG-Face")
-    detector_backend = input_args.get("detector_backend", "opencv")
-    enforce_detection = input_args.get("enforce_detection", True)
-    distance_metric = input_args.get("distance_metric", "cosine")
-    align = input_args.get("align", True)
+    model_name = body.get("model_name", "VGG-Face")
+    detector_backend = body.get("detector_backend", "opencv")
+    enforce_detection = body.get("enforce_detection", True)
+    distance_metric = body.get("distance_metric", "cosine")
+    align = body.get("align", True)
 
     verification = await service.verify(
         img1_path=img1_path,
@@ -157,22 +109,21 @@ async def verify(request: Request):
 
     return verification
 
-
 @router.post("/analyze")
 async def analyze(request: Request):
-    input_args = request.get_json()
+    body = request.json()
 
-    if input_args is None:
+    if body is None:
         return {"message": "empty input set passed"}
 
-    img_path = input_args.get("img_path")
+    img_path = body.get("img_path")
     if img_path is None:
         return {"message": "you must pass img_path input"}
 
-    detector_backend = input_args.get("detector_backend", "opencv")
-    enforce_detection = input_args.get("enforce_detection", True)
-    align = input_args.get("align", True)
-    actions = input_args.get("actions", ["age", "gender", "emotion", "race"])
+    detector_backend = body.get("detector_backend", "opencv")
+    enforce_detection = body.get("enforce_detection", True)
+    align = body.get("align", True)
+    actions = body.get("actions", ["age", "gender", "emotion", "race"])
 
     demographies = await service.analyze(
         img_path=img_path,
@@ -183,3 +134,17 @@ async def analyze(request: Request):
     )
 
     return demographies
+
+@router.post('/upload')
+async def create_upload_file(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        img_path = os.path.join(os_path, file.filename)
+        async with aiofiles.open(img_path, 'wb') as f:
+            await f.write(contents)
+    except Exception: 
+        pass
+    finally: 
+        await file.close()      
+        return {"message": f"Successfully uploaded {file.filename}"}
+   

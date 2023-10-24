@@ -1,6 +1,24 @@
 from deepface import DeepFace
+import json
 
-def stream():
+FACE_DB_PATH = './employee/image.jpg'
+FACE_DB = './representations'
+
+models = [
+  "Facenet512",   
+  "DeepFace",  
+  "VGG-Face", 
+  "OpenFace", 
+  "Facenet",   
+]
+
+backends = [
+  'opencv', 
+  'ssd',
+  'retinaface',    
+  'mtcnn', 
+]
+async def stream():
    print("Stream function called")
    obj = DeepFace.stream(db_path ="./representations")
    print("Stream object:", obj)
@@ -19,7 +37,7 @@ def represent(img_path, model_name, detector_backend, enforce_detection, align):
     return result
 
 
-def verify(
+async def verify(
     img1_path, img2_path, model_name, detector_backend, distance_metric, enforce_detection, align
 ):
     obj = DeepFace.verify(
@@ -34,7 +52,7 @@ def verify(
     return obj
 
 
-def analyze(img_path, actions, detector_backend, enforce_detection, align):
+async def analyze(img_path, actions, detector_backend, enforce_detection, align):
     result = {}
     demographies = DeepFace.analyze(
         img_path=img_path,
@@ -46,9 +64,9 @@ def analyze(img_path, actions, detector_backend, enforce_detection, align):
     result["results"] = demographies
     return result
 
-# escrever a função para o find fazendo upload da imagem e salvando no ima_path 
-def find(img_path, db_path, model_name, detector_backend, enforce_detection, align):
-    result = {}
+async def find(img_path, db_path, model_name, detector_backend, enforce_detection, align):
+    resultId = {}
+    resultMt = {}
     prediction = DeepFace.find(
         img_path=img_path,
         db_path=db_path,
@@ -56,7 +74,27 @@ def find(img_path, db_path, model_name, detector_backend, enforce_detection, ali
         detector_backend=detector_backend,
         enforce_detection=enforce_detection,
         align=align,
-    )
-    result["results"] = prediction[0]["identity"][0]
-    return result
+    )   
+    resultId["identity"] = prediction[0]["identity"][:3]
+    resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:3]
+      
+    # gerar o retorno em formato JSON
+    return resultId, resultMt
+ 
 
+async def find_face():
+    resultId = {}
+    resultMt = {}
+    prediction = DeepFace.verify_face(
+        img_path=FACE_DB_PATH,
+        db_path=FACE_DB,
+        model_name=models[2],
+        detector_backend=backends[2],
+        enforce_detection=True,
+        align=True,
+    )
+    resultId["identity"] = prediction[0]["identity"][:1]
+    resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:1]
+    
+    # gerar o retorno em formato JSON
+    return resultId, resultMt

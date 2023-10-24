@@ -89,8 +89,8 @@ def verify(
     img1_path,
     img2_path,
     model_name="VGG-Face",
-    detector_backend="opencv",
-    distance_metric="cosine",
+    detector_backend="retinaface",
+    distance_metric="euclidean",
     enforce_detection=True,
     align=True,
     normalization="base",
@@ -230,7 +230,7 @@ def analyze(
     img_path,
     actions=("emotion", "age", "gender", "race"),
     enforce_detection=True,
-    detector_backend="opencv",
+    detector_backend="retinaface",
     align=True,
     silent=False,
 ):
@@ -621,7 +621,7 @@ def represent(
     img_path,
     model_name="VGG-Face",
     enforce_detection=True,
-    detector_backend="opencv",
+    detector_backend="retinaface",
     align=True,
     normalization="base",
 ):
@@ -767,7 +767,7 @@ def stream(
 def extract_faces(
     img_path,
     target_size=(224, 224),
-    detector_backend="opencv",
+    detector_backend="retinaface",
     enforce_detection=True,
     align=True,
     grayscale=False,
@@ -832,7 +832,7 @@ def extract_faces(
 
 @deprecated(version="0.0.78", reason="Use DeepFace.extract_faces instead of DeepFace.detectFace")
 def detectFace(
-    img_path, target_size=(224, 224), detector_backend="opencv", enforce_detection=True, align=True
+    img_path, target_size=(224, 224), detector_backend="retinaface", enforce_detection=True, align=True
 ):
     """
     Deprecated function. Use extract_faces for same functionality.
