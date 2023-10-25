@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Request, Response, status, UploadFile, File  
 import aiofiles
 import service
+from dotenv import load_dotenv
 import os
 
 router = APIRouter()
 
-os_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/employee"
-db_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/representations"
+os_path = os.getenv("OS_PATH")
+db_path = os.getenv("DB_PATH")
 
 # escrever uma rota para o serviço de upload
 from fastapi import Request
@@ -139,7 +140,7 @@ async def analyze(request: Request):
 async def create_upload_file(file: UploadFile = File(...)):
     try:
         contents = await file.read()
-        img_path = os.path.join(os_path, file.filename)
+        img_path = os.path.join(os_path, file.filename)        
         async with aiofiles.open(img_path, 'wb') as f:
             await f.write(contents)
     except Exception: 

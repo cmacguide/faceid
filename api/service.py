@@ -1,10 +1,11 @@
 from deepface import DeepFace
-import json
+from dotenv import load_dotenv
+import os
 
-FACE_DB_PATH = './employee/image.jpg'
-FACE_DB = './representations'
-db_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/representations"
-img_path = "/home/cmac/desenvolvimento/trc/trcPlatform/faceRecognition/faceIDPi/employee/image.jpg"
+load_dotenv()
+
+db_path = os.getenv("DB_PATH")
+img_path = os.getenv("IMG_PATH")
 models = [
   "Facenet512",   
   "DeepFace",  
@@ -19,6 +20,7 @@ backends = [
   'retinaface',    
   'mtcnn', 
 ]
+
 async def stream():
    print("Stream function called")
    obj = DeepFace.stream(db_path ="./representations")
@@ -66,6 +68,7 @@ async def analyze(img_path, actions, detector_backend, enforce_detection, align)
     return result
 
 async def find(img_path, db_path, model_name, detector_backend, enforce_detection, align):
+    print("find function called")
     resultId = {}
     resultMt = {}
     prediction = DeepFace.find(
@@ -84,8 +87,10 @@ async def find(img_path, db_path, model_name, detector_backend, enforce_detectio
  
 
 async def find_face():
+    print("find_face function called")
     resultId = {}
     resultMt = {}
+  
     prediction = DeepFace.find(
         img_path=img_path,
         db_path=db_path,
