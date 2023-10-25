@@ -23,7 +23,7 @@ backends = [
 
 async def stream():
    print("Stream function called")
-   obj = DeepFace.stream(db_path ="./representations")
+   obj = DeepFace.stream(db_path =db_path, model_name=models[2], detector_backend=backends[2], enforce_detection=True, align=True)
    print("Stream object:", obj)
    return obj
 
