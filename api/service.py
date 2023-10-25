@@ -92,15 +92,19 @@ async def find_face():
     resultMt = {}
   
     prediction = DeepFace.find(
-        img_path=img_path,
-        db_path=db_path,
-        model_name=models[2],
-        detector_backend=backends[2],
-        enforce_detection=True,
-        align=True,
+      img_path=img_path,
+      db_path=db_path,
+      model_name=models[2],
+      detector_backend=backends[2],
+      enforce_detection=True,
+      align=True,
     )
     resultId["identity"] = prediction[0]["identity"][:1]
     resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:1]
+     
+    # apagar o arquivo da pasta employees
+    if img_path and os.path.exists(img_path):        
+      os.remove(img_path)
     
     # gerar o retorno em formato JSON
     return resultId, resultMt

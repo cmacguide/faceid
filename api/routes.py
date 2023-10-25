@@ -50,29 +50,29 @@ async def stream():
 
 @router.post("/represent")
 async def represent(request: Request):
-    body = request.json()
+  body = await request.json()
 
-    if body is None:
-        return {"message": "empty input set passed"}
+  if body is None:
+    return {"message": "empty input set passed"}
 
-    img_path = body.get("img")
-    if img_path is None:
-        return {"message": "you must pass img_path input"}
+  img_path = body.get("img")
+  if img_path is None:
+    return {"message": "you must pass img_path input"}
 
-    model_name = body.get("model_name", "VGG-Face")
-    detector_backend = body.get("detector_backend", "opencv")
-    enforce_detection = body.get("enforce_detection", True)
-    align = body.get("align", True)
+  model_name = body.get("model_name", "VGG-Face")
+  detector_backend = body.get("detector_backend", "opencv")
+  enforce_detection = body.get("enforce_detection", True)
+  align = body.get("align", True)
 
-    obj = await service.represent(
-        img_path=img_path,
-        model_name=model_name,
-        detector_backend=detector_backend,
-        enforce_detection=enforce_detection,
-        align=align,
-    )
+  obj = await service.represent(
+    img_path=img_path,
+    model_name=model_name,
+    detector_backend=detector_backend,
+    enforce_detection=enforce_detection,
+    align=align,
+  ) # type: ignore
 
-    return obj
+  return obj
 
 @router.post("/verify")
 async def verify(request: Request):
@@ -138,17 +138,18 @@ async def analyze(request: Request):
 
 @router.post('/upload')
 async def create_upload_file(file: UploadFile = File(...)):
-    try:
-        contents = await file.read()
-        img_path = os.path.join(os_path, file.filename)        
-        async with aiofiles.open(img_path, 'wb') as f:
-            await f.write(contents)
-    except Exception: 
-        pass
-    finally: 
-        await file.close()      
-        
-        prediction = await service.find_face()
+  try:
+    contents = await file.read()
+    img_path = os.path.join(os_path, file.filename)         # type: ignore
+    async with aiofiles.open(img_path, 'wb') as f:
+      await f.write(contents)
+  except Exception: 
+    pass
+  finally: 
+    await file.close()      
+    
+    prediction = await service.find_face()
 
-    return prediction
+  return prediction
+
    
