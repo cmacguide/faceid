@@ -1,11 +1,14 @@
 from deepface import DeepFace
 from dotenv import load_dotenv
+import requests
 import os
 
 load_dotenv()
 
 db_path = os.getenv("DB_PATH")
 img_path = os.getenv("IMG_PATH")
+cpf_consult = None
+
 models = [
     "ArcFace",
     "VGG-Face",
@@ -35,6 +38,8 @@ distance_metric = [
     'euclidean',
     'euclidean_l2',
 ]
+
+url = os.getenv("FIND_CPF_URL")
 
 
 async def stream():
@@ -128,9 +133,27 @@ async def find_face():
     resultId["identity"] = prediction[0]["identity"][:1]
     resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:1]
 
+    # capturar o cpf do funcionário
+    cpf_number = resultId["identity"][0].split("_")[0]
+    cpf_number = str(cpf_number.split('/')[-1].split('.')[0])
+    global cpf_consult
+    cpf_consult = cpf_number
+
     # apagar o arquivo da pasta employees
     if img_path and os.path.exists(img_path):
         os.remove(img_path)
 
     # gerar o retorno em formato JSON
     return resultId, resultMt
+
+
+async def find_cpf():
+    global cpf_consult
+    print("find_cpf", cpf_consult)
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "insomnia/8.2.0"
+    }
+    payload = {"data": {"cpf_funcionario": cpf_consult}}
+    response = requests.request("POST", url, json=payload, headers=headers)
+    print(response.text)

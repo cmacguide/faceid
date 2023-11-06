@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Request, Response, status, UploadFile, File  
+from fastapi import Request
+from fastapi import APIRouter, Request, Response, status, UploadFile, File
 import aiofiles
 import service
 from dotenv import load_dotenv
@@ -10,16 +11,17 @@ os_path = os.getenv("OS_PATH")
 db_path = os.getenv("DB_PATH")
 
 # escrever uma rota para o serviço de upload
-from fastapi import Request
+
 
 @router.get("/")
 async def root():
     return "<h1>Welcome to DeepFace API!</h1>"
 
+
 @router.post("/find")
-async def find(request: Request):   
+async def find(request: Request):
     body = await request.json()
-    
+
     img_path = body.get("img_path")
     if img_path is None:
         return {"message": "you must pass img_path input"}
@@ -44,39 +46,42 @@ async def find(request: Request):
 
     return prediction
 
+
 @router.get("/stream")
 async def stream():
-  return await service.stream()
+    return await service.stream()
+
 
 @router.post("/represent")
 async def represent(request: Request):
-  body = await request.json()
+    body = await request.json()
 
-  if body is None:
-    return {"message": "empty input set passed"}
+    if body is None:
+        return {"message": "empty input set passed"}
 
-  img_path = body.get("img")
-  if img_path is None:
-    return {"message": "you must pass img_path input"}
+    img_path = body.get("img")
+    if img_path is None:
+        return {"message": "you must pass img_path input"}
 
-  model_name = body.get("model_name", "VGG-Face")
-  detector_backend = body.get("detector_backend", "opencv")
-  enforce_detection = body.get("enforce_detection", True)
-  align = body.get("align", True)
+    model_name = body.get("model_name", "VGG-Face")
+    detector_backend = body.get("detector_backend", "opencv")
+    enforce_detection = body.get("enforce_detection", True)
+    align = body.get("align", True)
 
-  obj = await service.represent(
-    img_path=img_path,
-    model_name=model_name,
-    detector_backend=detector_backend,
-    enforce_detection=enforce_detection,
-    align=align,
-  ) # type: ignore
+    obj = await service.represent(
+        img_path=img_path,
+        model_name=model_name,
+        detector_backend=detector_backend,
+        enforce_detection=enforce_detection,
+        align=align,
+    )  # type: ignore
 
-  return obj
+    return obj
+
 
 @router.post("/verify")
 async def verify(request: Request):
-    body = request.json()    
+    body = request.json()
 
     if body is None:
         return {"message": "empty input set passed"}
@@ -110,6 +115,7 @@ async def verify(request: Request):
 
     return verification
 
+
 @router.post("/analyze")
 async def analyze(request: Request):
     body = request.json()
@@ -136,20 +142,23 @@ async def analyze(request: Request):
 
     return demographies
 
+
 @router.post('/upload')
 async def create_upload_file(file: UploadFile = File(...)):
-  try:
-    contents = await file.read()
-    img_path = os.path.join(os_path, file.filename)         # type: ignore
-    async with aiofiles.open(img_path, 'wb') as f:
-      await f.write(contents)
-  except Exception: 
-    pass
-  finally: 
-    await file.close()      
-    
-    prediction = await service.find_face()
+    try:
+        contents = await file.read()
+        img_path = os.path.join(os_path, file.filename)         # type: ignore
+        async with aiofiles.open(img_path, 'wb') as f:
+            await f.write(contents)
+    except Exception:
+        pass
+    finally:
+        await file.close()
 
-  return prediction
+        prediction = await service.find_face()
 
-   
+        if prediction is None:
+            return {"message": "empty input set passed"}
+        else:
+            await service.find_cpf()
+            return prediction
