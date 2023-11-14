@@ -1,16 +1,16 @@
-FROM python:3.11-slim
+FROM tensorflow/tensorflow:latest
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6 v4l-utils -y 
-RUN apt-get install libxcb-xinerama0
-RUN python3 -m pip install --no-cache-dir --upgrade pip
+
+# RUN pip install --upgrade pip
 
 # Define o diretório de trabalho
 WORKDIR /opt
 COPY requirements.txt ./requirements.txt
 COPY requirements.txt ./requirements_additional.txt
+# RUN pip install --ignore-installed -r requirements.txt
 RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements.txt -U
-RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements_additional.txt  -U
- 
+RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements_additional.txt
 
 # Copia o diretório atual para dentro do container
 WORKDIR /opt/app
