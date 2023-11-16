@@ -19,6 +19,8 @@ services:
     #   - /dev/video0:/dev/video0
 
     volumes:
+      - ${VOLUME_PATH}.deepface:/root/.deepface
+      - ${VOLUME_PATH}.keras:/root/.keras
       - ${VOLUME_PATH}deepface:/opt/app/deepface
       - ${VOLUME_PATH}api/routes.py:/opt/app/api/routes.py
       - ${VOLUME_PATH}api/service.py:/opt/app/api/service.py
