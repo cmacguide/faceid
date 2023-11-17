@@ -10,7 +10,7 @@ services:
     container_name: faceid
     env_file:
       - .env
-    image: cmac01/app-faceid:dev01
+    image: cmac01/app-faceid:devcpu
     restart: always
 
     ports:
