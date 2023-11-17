@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest
+FROM bitnami/tensorflow-serving:latest
 RUN apt update
 # RUN apt install ffmpeg libsm6 libxext6 v4l-utils -y 
 # RUN apt install libxcb-xinerama0
