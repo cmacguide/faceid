@@ -8,9 +8,9 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip
 WORKDIR /opt
 COPY requirements.txt ./requirements.txt
 COPY requirements.txt ./requirements_additional.txt
+# RUN pip install --ignore-installed -r requirements.txt
 RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements.txt -U
-RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements_additional.txt  -U
- 
+RUN python3 -m pip install --ignore-installed --no-cache-dir -r requirements_additional.txt  -U 
 
 # Copia o diretório atual para dentro do container
 WORKDIR /opt/app

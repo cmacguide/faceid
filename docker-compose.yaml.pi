@@ -10,7 +10,11 @@ services:
     container_name: faceid
     env_file:
       - .env
+<<<<<<< HEAD:docker-compose.yaml.pi
     image: cmac01/app-faceid:latest
+=======
+    image: cmac01/app-faceid:devcpu
+>>>>>>> 240dd5300b9fcb8162dfe2cfd16c5a9c8182076d:docker-compose.yaml
     restart: always
 
     ports:
@@ -19,6 +23,8 @@ services:
     #   - /dev/video0:/dev/video0
 
     volumes:
+      - ${VOLUME_PATH}.deepface:/root/.deepface
+      - ${VOLUME_PATH}.keras:/root/.keras
       - ${VOLUME_PATH}deepface:/opt/app/deepface
       - ${VOLUME_PATH}api/routes.py:/opt/app/api/routes.py
       - ${VOLUME_PATH}api/service.py:/opt/app/api/service.py

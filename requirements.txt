@@ -11,9 +11,9 @@ pandas
 gdown
 tqdm
 Pillow
-opencv-python
-tensorflow
-keras
+# opencv-python
+# tensorflow
+# keras
 # mtcnn>=0.1.0
 # retina-face>=0.0.1
 fire
