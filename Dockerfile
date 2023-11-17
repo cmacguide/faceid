@@ -1,7 +1,7 @@
 FROM python:3.11-slim
-RUN apt-get update
-RUN apt-get install ffmpeg libsm6 libxext6 v4l-utils -y 
-RUN apt-get install libxcb-xinerama0
+RUN apt update
+RUN apt install ffmpeg libsm6 libxext6 v4l-utils -y 
+RUN apt install libxcb-xinerama0
 RUN python3 -m pip install --no-cache-dir --upgrade pip
 
 # Define o diretório de trabalho
