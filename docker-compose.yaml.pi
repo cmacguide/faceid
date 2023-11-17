@@ -1,0 +1,32 @@
+version: "3"
+
+networks:
+  innerapp-net:
+    name: innerapp_catracaApp
+    external: true
+
+services:
+  faceid:
+    container_name: faceid
+    env_file:
+      - .env
+    image: cmac01/app-faceid:latest
+    restart: always
+
+    ports:
+      - 7000:7000
+    # devices:
+    #   - /dev/video0:/dev/video0
+
+    volumes:
+      - ${VOLUME_PATH}.deepface:/root/.deepface
+      - ${VOLUME_PATH}.keras:/root/.keras
+      - ${VOLUME_PATH}deepface:/opt/app/deepface
+      - ${VOLUME_PATH}api/routes.py:/opt/app/api/routes.py
+      - ${VOLUME_PATH}api/service.py:/opt/app/api/service.py
+      - ${VOLUME_PATH}api/main.py:/opt/app/api/main.py
+      - ${VOLUME_PATH}setup.py:/opt/app/setup.py
+      - ${VOLUME_PATH}representations:/opt/app/representations
+      - ${VOLUME_PATH}employee:/opt/app/employee
+    networks:
+      - innerapp-net
