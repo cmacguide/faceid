@@ -131,7 +131,7 @@ async def find_face():
         align=True,
     )
     resultId["identity"] = prediction[0]["identity"][:1]
-    resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:1]
+    resultMt["Facenet512"] = prediction[0]["Facenet512_cosine"][:1]
 
     # capturar o cpf do funcionário
     cpf_number = resultId["identity"][0].split("_")[0]
