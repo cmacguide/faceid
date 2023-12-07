@@ -123,14 +123,16 @@ async def find_face():
     prediction = DeepFace.find(
         img_path=img_path,
         db_path=db_path,
-        model_name=models[1],
+        model_name=models[3],
         detector_backend=backends[1],
         distance_metric=distance_metric[0],
-        normalization=normalization[2],
+        normalization=normalization[0],
         enforce_detection=False,
         align=True,
     )
+    print(prediction)
     resultId["identity"] = prediction[0]["identity"][:1]
+    # resultMt["Facenet512"] = prediction[0]["Facenet512_cosine"][:1]
     resultMt["VGG-Face"] = prediction[0]["VGG-Face_cosine"][:1]
 
     # capturar o cpf do funcionário
