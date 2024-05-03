@@ -1,38 +1,106 @@
-<mxfile host="app.diagrams.net" modified="2024-05-03T15:24:21.634Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="dTU02nk2Yp_ELaSG-j-D" version="24.0.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-03T16:14:43.094Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="cUFtrozTQoHO_aD4dBHs" version="24.0.5" type="github">
   <diagram name="Página-1" id="3TbgN4hxx0ZxHx1WSeb2">
-    <mxGraphModel dx="1913" dy="1187" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="444" dy="969" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" background="#999999" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-1" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="140" y="210" width="20" height="120" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-2" target="Lz4Zl00iW3XlrXrYM9Rd-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="92" y="90" />
+              <mxPoint x="92" y="345" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-2" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="50" y="60" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-3" value="{&#xa;&#x9;&#x9;&#x9;&quot;id&quot;: 1000000,&#xa;&#x9;&#x9;&#x9;&quot;registration&quot;: &quot;01111&quot;,&#xa;&#x9;&#x9;&#x9;&quot;name&quot;: &quot;User01&quot;,&#xa;&#x9;&#x9;&#x9;&quot;password&quot;: &quot;&quot;,&#xa;&#x9;&#x9;&#x9;&quot;salt&quot;: &quot;&quot;,&#xa;&#x9;&#x9;&#x9;&quot;expires&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;user_type_id&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;begin_time&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;end_time&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;image_timestamp&quot;: 1714671046,&#xa;&#x9;&#x9;&#x9;&quot;last_access&quot;: 1714729986&#xa;&#x9;&#x9;}," style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="10" width="210" height="210" as="geometry" />
-        </mxCell>
         <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-4" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="110" y="50" width="20" height="120" as="geometry" />
+          <mxGeometry x="110" y="12" width="20" height="211" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-5" target="Lz4Zl00iW3XlrXrYM9Rd-4">
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-13" target="Lz4Zl00iW3XlrXrYM9Rd-22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-5" value="Regras de&amp;nbsp;&lt;div&gt;acesso para usuário&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="10" y="235" width="130" height="40" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-13" value="&quot;users&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1000000,&#xa;            &quot;registration&quot;: &quot;01111&quot;,&#xa;            &quot;name&quot;: &quot;User01&quot;,&#xa;            &quot;password&quot;: &quot;&quot;,&#xa;            &quot;salt&quot;: &quot;&quot;,&#xa;            &quot;expires&quot;: 0,&#xa;            &quot;user_type_id&quot;: 0,&#xa;            &quot;begin_time&quot;: 0,&#xa;            &quot;end_time&quot;: 0,&#xa;            &quot;image_timestamp&quot;: 1714671046,&#xa;            &quot;last_access&quot;: 1714737790&#xa;        },&#xa;]" style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="150" y="15" width="248" height="223" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-8" value="&quot;user_access_rules&quot;: []" style="text;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="170" y="250" width="160" height="40" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-26" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="479" y="30.996470588235354" width="343.0005882352941" height="338.99999999999994" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-9" value="Regras de acesso" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="10" y="378" width="120" height="30" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-22" value="Grupos" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-26">
+          <mxGeometry y="97.00352941176465" width="57" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-10" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="140" y="340" width="20" height="380" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-23" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-26">
+          <mxGeometry x="64" y="7.003529411764646" width="20" height="316" as="geometry" />
         </mxCell>
-        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-11" value="&quot;access_rules&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1,&#xa;            &quot;name&quot;: &quot;Sempre Liberado (Padrão)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 4,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1001)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 5,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1002)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 6,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1003)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="210" y="340" width="400" height="400" as="geometry" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-24" value="&quot;groups&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1,&#xa;            &quot;name&quot;: &quot;Departamento Padrão&quot;&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 1000,&#xa;            &quot;name&quot;: &quot;Visitantes&quot;&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 1001,&#xa;            &quot;name&quot;: &quot;company01_builder&quot;&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 1002,&#xa;            &quot;name&quot;: &quot;company_02_partner&quot;&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 1003,&#xa;            &quot;name&quot;: &quot;obra_01&quot;&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-26">
+          <mxGeometry x="103.00058823529415" width="240" height="339" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-29" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="918" y="57" width="334" height="281" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-16" value="Grupos de usuários" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-29">
+          <mxGeometry y="59" width="123" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-18" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-29">
+          <mxGeometry x="122" y="12" width="20" height="262" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-19" value="&quot;user_groups&quot;: [&#xa;        {&#xa;            &quot;user_id&quot;: 1000001,&#xa;            &quot;group_id&quot;: 1002&#xa;        },&#xa;        {&#xa;            &quot;user_id&quot;: 1000001,&#xa;            &quot;group_id&quot;: 1003&#xa;        },&#xa;        {&#xa;            &quot;user_id&quot;: 1000000,&#xa;            &quot;group_id&quot;: 1001&#xa;        },&#xa;        {&#xa;            &quot;user_id&quot;: 1000000,&#xa;            &quot;group_id&quot;: 1003&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-29">
+          <mxGeometry x="161" width="173" height="281" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.009;entryY=0.502;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-24" target="Lz4Zl00iW3XlrXrYM9Rd-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.53;entryY=0.057;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-16" target="Lz4Zl00iW3XlrXrYM9Rd-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-35" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="73" y="437" width="326" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-1" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-35">
+          <mxGeometry x="130" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-5" value="Regras de&amp;nbsp;&lt;div&gt;acesso para usuário&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-35">
+          <mxGeometry y="38" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-33" value="&quot;user_access_rules&quot;: [&#xa;        {&#xa;            &quot;user_id&quot;: 1000000,&#xa;            &quot;access_rule_id&quot;: 7&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-35">
+          <mxGeometry x="153" y="5.998823529411709" width="173" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-41" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="109" y="270" width="341.0041176470588" height="172.99588235294124" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-34" value="time_zones" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-41">
+          <mxGeometry y="62" width="79" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-36" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-41">
+          <mxGeometry x="93" width="20" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-37" value="&quot;time_zones&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1,&#xa;            &quot;name&quot;: &quot;Sempre Liberado&quot;&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 2,&#xa;            &quot;name&quot;: &quot;horario_padrao&quot;&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-41">
+          <mxGeometry x="127.00411764705879" y="6.995882352941237" width="214" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-34" target="Lz4Zl00iW3XlrXrYM9Rd-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-45" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="916" y="379.50176470588247" width="586.0023529411765" height="483" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-9" value="Regras de acesso" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-45">
+          <mxGeometry y="43.498235294117535" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-10" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-45">
+          <mxGeometry x="130" y="5.498235294117535" width="20" height="469" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-44" value="&quot;access_rules&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1,&#xa;            &quot;name&quot;: &quot;Sempre Liberado (Padrão)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 4,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1001)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 5,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1002)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 6,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1003)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 7,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for users 1000000)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="Lz4Zl00iW3XlrXrYM9Rd-45">
+          <mxGeometry x="164.00235294117647" width="420" height="483" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-46" value="&lt;div&gt;Regras de acesso para grupos&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="550" width="182" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-47" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="640.5" y="406" width="20" height="314" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-48" value="&quot;group_access_rules&quot;: [&#xa;&#x9;&#x9;{&#xa;&#x9;&#x9;&#x9;&quot;group_id&quot;: 1,&#xa;&#x9;&#x9;&#x9;&quot;access_rule_id&quot;: 4&#xa;&#x9;&#x9;},&#xa;&#x9;&#x9;{&#xa;&#x9;&#x9;&#x9;&quot;group_id&quot;: 1000,&#xa;&#x9;&#x9;&#x9;&quot;access_rule_id&quot;: 1&#xa;&#x9;&#x9;},&#xa;&#x9;&#x9;{&#xa;&#x9;&#x9;&#x9;&quot;group_id&quot;: 1001,&#xa;&#x9;&#x9;&#x9;&quot;access_rule_id&quot;: 4&#xa;&#x9;&#x9;},&#xa;&#x9;&#x9;{&#xa;&#x9;&#x9;&#x9;&quot;group_id&quot;: 1002,&#xa;&#x9;&#x9;&#x9;&quot;access_rule_id&quot;: 5&#xa;&#x9;&#x9;},&#xa;&#x9;&#x9;{&#xa;&#x9;&#x9;&#x9;&quot;group_id&quot;: 1003,&#xa;&#x9;&#x9;&#x9;&quot;access_rule_id&quot;: 6&#xa;&#x9;&#x9;}&#xa;&#x9;]" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="672" y="398.5" width="154" height="339" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
