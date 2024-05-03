@@ -1,9 +1,39 @@
-<mxfile host="app.diagrams.net" modified="2024-05-03T15:09:47.161Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" version="24.0.5" etag="1Y9iHTM28raRR1NheW37" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-03T15:24:21.634Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="dTU02nk2Yp_ELaSG-j-D" version="24.0.5" type="github">
   <diagram name="Página-1" id="3TbgN4hxx0ZxHx1WSeb2">
-    <mxGraphModel>
+    <mxGraphModel dx="1913" dy="1187" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-1" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="140" y="210" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-2" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="60" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-3" value="{&#xa;&#x9;&#x9;&#x9;&quot;id&quot;: 1000000,&#xa;&#x9;&#x9;&#x9;&quot;registration&quot;: &quot;01111&quot;,&#xa;&#x9;&#x9;&#x9;&quot;name&quot;: &quot;User01&quot;,&#xa;&#x9;&#x9;&#x9;&quot;password&quot;: &quot;&quot;,&#xa;&#x9;&#x9;&#x9;&quot;salt&quot;: &quot;&quot;,&#xa;&#x9;&#x9;&#x9;&quot;expires&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;user_type_id&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;begin_time&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;end_time&quot;: 0,&#xa;&#x9;&#x9;&#x9;&quot;image_timestamp&quot;: 1714671046,&#xa;&#x9;&#x9;&#x9;&quot;last_access&quot;: 1714729986&#xa;&#x9;&#x9;}," style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="10" width="210" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-4" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="110" y="50" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Lz4Zl00iW3XlrXrYM9Rd-5" target="Lz4Zl00iW3XlrXrYM9Rd-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-5" value="Regras de&amp;nbsp;&lt;div&gt;acesso para usuário&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="235" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-8" value="&quot;user_access_rules&quot;: []" style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="250" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-9" value="Regras de acesso" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="378" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-10" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="140" y="340" width="20" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz4Zl00iW3XlrXrYM9Rd-11" value="&quot;access_rules&quot;: [&#xa;        {&#xa;            &quot;id&quot;: 1,&#xa;            &quot;name&quot;: &quot;Sempre Liberado (Padrão)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 4,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1001)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 5,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1002)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        },&#xa;        {&#xa;            &quot;id&quot;: 6,&#xa;            &quot;name&quot;: &quot;(access_rules automatically created for groups 1003)&quot;,&#xa;            &quot;type&quot;: 1,&#xa;            &quot;priority&quot;: 0&#xa;        }&#xa;    ]" style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="210" y="340" width="400" height="400" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
